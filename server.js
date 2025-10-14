@@ -1,8 +1,14 @@
 const express = require("express");
+const dotenv = require("dotenv").config();
+const mongoose = require("mongoose");
+const connectDB=require("./config/db")
+connectDB();
+
 const app = express();
 const cors = require("cors");
 app.use(cors());
-const dotenv = require("dotenv").config();
-app.listen(3000, () => {
-  console.log("this is listen in port 300");
+
+const PORT = process.env.port;
+app.listen(PORT, () => {
+  console.log(`This is running in port ${PORT}`);
 });
