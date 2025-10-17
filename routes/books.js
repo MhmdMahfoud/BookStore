@@ -2,7 +2,20 @@ const express = require("express");
 const router = express.Router();
 const connectDB = require("../config/db");
 connectDB();
+const multer  = require('multer')
 const Book = require("../models/BookSchema");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/images')
+  },
+  filename: function (req, file, cb) {
+    const filename = Date.now() + '-' +  file.fieldname
+    cb(null, filename)
+  }
+})
+
+const upload = multer({ storage: storage })
 try {
   router.post("/books", async (req, res) => {
     const {
@@ -67,5 +80,23 @@ router.put("/updatebook/:id", async (req, res) => {
   }
   res.json({ message: "book updated " });
 });
+
+router.delete("/deleteBook/:id", async (req,res)=> {
+
+    try {
+        
+         const book = await Book.findByIdAndDelete(req.params.id)
+
+      if (!book) {
+      return res.status(404).json({ message: "Book not found" })
+    } 
+
+    res.json({ message: "Book deleted successfully" })
+    } catch (error) {
+      res.status(500).json({ error: error.message })
+    }
+   
+
+})
 
 module.exports = router;
