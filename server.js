@@ -10,7 +10,8 @@ const cors = require("cors");
 app.use(cors());
 
 app.use("/users", require("./routes/users"));
-
+app.use("/books" ,require("./routes/books"));
+app.use("/Category",require("./routes/Category"));
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`This is running in port ${PORT}`);

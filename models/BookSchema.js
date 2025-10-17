@@ -29,22 +29,21 @@ const BookSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  isFeatred: {
+  isFeatured: {
     type: Boolean,
     default: false,
   },
-  discountPercentege:{
-    type:Boolean,
-   default:false,},
+  discountPercentege: {
+    type: Number,
+    default: false,
+  },
 
-   coverImage:{
-  
-    type:String
-   }
-   ,
-   Category:{
-    type:mongoose.Schema.Types.ObjectId,ref:"Category"
-
-   }
+  coverImage: {
+    type: String,
+  },
+  Category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
+  },
 });
-module.exports=mongoose.model("Book",BookSchema)
+module.exports = mongoose.model("Book", BookSchema);
