@@ -1,0 +1,16 @@
+@import "tailwindcss";
+:root {
+  font-family: "Inter";
+}
+
+button {
+  background-color: #f3595e;
+  color: white;
+  border-radius: 20px;
+  padding: 10px ;
+  width: 100px;
+  transition: 0.3 all;
+}
+button:hover{
+  background-color:#cd4145 ;
+}
