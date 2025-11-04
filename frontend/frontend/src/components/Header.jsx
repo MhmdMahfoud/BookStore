@@ -70,7 +70,7 @@ function Header() {
           className={`ml-4 ${
             isScrolled
               ? " text-white bg-[#f7444a]"
-              : " text-white bg-[#F86D72] "
+              : " text-white bg-[#f24e53] "
           }`}
         >
           Login
