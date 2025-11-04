@@ -14,4 +14,13 @@ router.post("/category", async (req, res) => {
   }
 });
 
+router.get("/getCategory", async (req, res) => {
+  try {
+    const newCategory = await category.find()
+    return res.json(newCategory);
+  } catch (error) {
+    res.status(400).json({ error });
+  }
+});
+
 module.exports = router;
